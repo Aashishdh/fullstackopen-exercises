@@ -1,11 +1,5 @@
-import React from 'react'
-
-const Total = (props) => {
-  return (
-    <div>
-      <p>Number of exercises {props.total}</p>
-    </div>
-  )
+const Total = ({ total }) => {
+  return <p>Number of exercises {total}</p>
 }
 
 export default Total
