@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Statistics from './Components/Statistics'
+import Button from './Components/Button'
 
 const App = () => {
   const [good, setGood] = useState(0)
@@ -11,8 +12,12 @@ const App = () => {
       <div className='m-6'>
         <h1 className='mb-4 font-bold text-3xl'>give feedback</h1>
 
-        <button 
-        onClick={()=>{setGood(good+1)}}
+        {/* we create custom button */}
+        <Button handleClick={() => setGood(good + 1)} text="good" />
+        <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
+        <Button handleClick={() => setBad(bad + 1)} text="bad" />
+        {/* <button 
+        onClick={()=>{setGood(good+1)}} 
         className='mr-2 bg-blue-500 px-8 py-2 border-2 border-black'
         >
           good
@@ -29,8 +34,8 @@ const App = () => {
         onClick={()=>{setBad(bad+1)}}
         className='px-8 py-2 border-2 border-black bg-yellow-500 mb-8'
         >
-          bad
-        </button>
+           bad
+        </button> */}
 
         <h2 className='font-bold text-3xl'>Statistics</h2>
         {/* create separate statistics folder so i commet it to remember it */}
