@@ -13,12 +13,28 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
 
+  console.log(votes)
+
+const handleVote=()=>{
+    // console.log("hello")
+    const newvotes=[...votes]
+    newvotes[selected] +=1
+    setVotes(newvotes)
+  }
   return (
      <div className='m-12'>
       <h1 className='text-2xl font-bold mb-4'>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
+      <p>has {votes[selected]} votes</p>
 
+        <button 
+        onClick={handleVote}
+        className='mr-2 px-6 py-2 bg-yellow-500 text-white border-2 border-orange-500'
+      >
+        vote
+      </button>
       <button 
         onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}
         className='mt-4 px-6 py-2 bg-purple-500 text-white border-2 border-orange-500'
