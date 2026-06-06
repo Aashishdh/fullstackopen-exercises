@@ -15,8 +15,16 @@ const App = () => {
   const [selected, setSelected] = useState(0)
 
   return (
-    <div>
-      {anecdotes[selected]}
+     <div className='m-12'>
+      <h1 className='text-2xl font-bold mb-4'>Anecdote of the day</h1>
+      <p>{anecdotes[selected]}</p>
+
+      <button 
+        onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}
+        className='mt-4 px-6 py-2 bg-purple-500 text-white border-2 border-orange-500'
+      >
+        next anecdote
+      </button>
     </div>
   )
 }
