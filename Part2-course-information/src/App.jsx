@@ -1,7 +1,7 @@
 import React from 'react'
 import Course from './Components/Course'
 const App = () => {
-  const course = {
+  const courses = [{
     name: 'Half Stack application development',
     id: 1,
     parts: [
@@ -11,11 +11,30 @@ const App = () => {
       { name: 'Redux', exercises: 11, id: 4 } 
 
     ]
-  }
+  },
+  {
+    name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
+    }
+  ]
 
   return (
     <div>
-      <Course course={course} />
+       {courses.map(course => (
+        <Course key={course.id} course={course} />
+      ))}
     </div>
   )
 }
