@@ -1,7 +1,9 @@
-import React from "react"
-const Part = ({ name, exercises }) => (
-  <p>{name} {exercises}</p>
-)
+// put it into one module called course
 
-export default Part
+// import React from "react"
+// const Part = ({ name, exercises }) => (
+//   <p>{name} {exercises}</p>
+// )
+
+// export default Part
 
