@@ -8,6 +8,11 @@ const App = () => {
 
   const addperson=(e)=>{
     e.preventDefault();
+    // It display when we try to add same name as we set in name.
+    if(persons.some(elem=>elem.name===newName)){
+      alert(`${newName} is already added to phonebook`)
+      return
+    }
     const nameobject={name:newName}
     setPersons(persons.concat(nameobject))
     setNewName('')
