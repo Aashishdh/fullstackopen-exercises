@@ -1,5 +1,7 @@
 import { useState } from 'react'
-
+import Filter from './Components/Filter'
+import PersonForm from './Components/PersonForm'
+import Persons from './Components/Persons'
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas' ,number:'31-383746'},
@@ -14,7 +16,7 @@ const App = () => {
   // Usestate for filter 
    const [filter, setFilter] = useState('')
 
-  const addperson=(e)=>{
+  const addPerson=(e)=>{
     e.preventDefault();
     // It display when we try to add same name as we set in name.
     if(persons.some(elem=>elem.name===newName)){
@@ -33,7 +35,7 @@ const App = () => {
     setNewName(event.target.value)
   }
 
-   const handlenumberChange = (event) => {
+   const handleNumberChange = (event) => {
     setnewNumber(event.target.value)
   }
   const handleFilterChange = (event) => {
@@ -49,30 +51,41 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      {/* Created filter input */}
+      {/* Created filter input 
       <div>
         filter shown with: <input value={filter} onChange={handleFilterChange} />
-      </div>
+      </div>*/}
+      <Filter 
+      filter={filter} handleFilterChange={handleFilterChange} 
+      />
       <h3>Add a new</h3>
-      <form onSubmit={addperson}>
+      {/* <form onSubmit={addperson}>
         <div>
           name: <input value={newName} onChange={handleNameChange} />
         </div>
-        {/* number input */}
+        //number input 
          <div>
           number: <input value={newNumber} onChange={handlenumberChange} />
         </div>
         <div>
           <button type="submit">add</button>
         </div>
-      </form>
+      </form> */}
+
+      <PersonForm 
+        addPerson={addPerson}
+        newName={newName}
+        handleNameChange={handleNameChange}
+        newNumber={newNumber}
+        handleNumberChange={handleNumberChange}
+      />
+
       <h2>Numbers</h2>
 
-      <ul>
+      {/* <ul>
         {personsToShow.map(person=><li key={person.name}>{person.name} {' '}{person.number}</li>)}
-      </ul>
-
-
+      </ul> */}
+       <Persons persons={personsToShow} />
       {/* Debugging helper */}
       <div>debug: {newName}{newNumber}</div>
     </div>
