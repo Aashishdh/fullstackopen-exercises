@@ -1,7 +1,8 @@
-const Persons = ({ persons }) => {
+const Persons = ({ persons,handleDelete }) => {
   if (!Array.isArray(persons)) {
     return <p>No persons to show</p>
   }
+
 
   return (
     <ul>
@@ -14,5 +15,6 @@ const Persons = ({ persons }) => {
     </ul>
   )
 }
+
 
 export default Persons
