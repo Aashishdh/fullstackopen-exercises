@@ -26,10 +26,23 @@ const App = () => {
 
   const addPerson = (e) => {
     e.preventDefault()
-    if (persons.some(elem => elem.name === newName)) {
+    /*if (persons.some(elem => elem.name === newName)) {
       alert(`${newName} is already added to phonebook`)
       return
-    }
+    }*/
+
+      //new code to detect duplicate
+      const existingperson=persons.find(elem=>elem.name===newName)
+      if(existingperson){
+        if(window.confirm(`${newName} is already added to phonebook, replace the old number with the new one?`)){
+          const updateperson={...existingperson,number:newNumber}
+          personService.update(existingperson.id, updateperson).then(returnedperson=>{
+            setPersons.map(elem=>elem.id!==existingperson.id ?p:returnedperson)
+            setNewName('')
+            setNewNumber('')
+          })
+        }
+      }
     // const nameObject = { name: newName, number: newNumber }
     const newPerson={name:newName, number:newNumber}
     personService.create(newPerson).then(elem=>{
